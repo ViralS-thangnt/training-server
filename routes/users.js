@@ -6,7 +6,7 @@ var RandomUser = require('randomuser')
   , r = new RandomUser();
 
 var users = [];
-r.getUsers({results: 1}, (data) => {
+r.getUsers({results: 50}, (data) => {
   users = data.map((item, index) => {
     return {
       ...item,
@@ -204,10 +204,6 @@ router.put('/:id/edit', function(req, res, next) {
       last: name,
     }
   }
-
-  // users = users.filter((item) => {
-  //   return (item.id.id != id);
-  // });
 
   res.send(
     utils.responseWithSuccess(foundUser, 200, 'Update success')
